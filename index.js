@@ -1,204 +1,234 @@
-// // /* Your Code Here */
 
-// // /*
-// //  We're giving you this function. Take a look at it, you might see some usage
-// //  that's new and different. That's because we're avoiding a well-known, but
-// //  sneaky bug that we'll cover in the next few lessons!
-
-// //  As a result, the lessons for this function will pass *and* it will be available
-// //  for you to use if you need it!
-// //  */
-
-
-
-
-
-
-// // // function createTimeOutEvent(employeeRecord, dateStamp) {
-// // //     const timeOutEvent = {
-// // //         type: "TimeOut",
-// // //         hour: parseInt(dateStamp.split(" ")[1], 10),
-// // //         date: dateStamp.split(" ")[0]
-// // //     };
-// // //     employeeRecord.timeOutEvents.push(timeInEvent);
-// // //     return employeeRecord;
-// // // 
-// // function createTimeOutEvent(employeeRecord, dateStamp) {
-// //     const timeOutEvent = {
-// //         type: "TimeOut",
-// //         hour: parseInt(dateStamp.split(" ")[1], 10),
-// //         date: dateStamp.split(" ")[0]
-// //     };
-// //     employeeRecord.timeOutEvents.push(timeOutEvent);
-// //     return employeeRecord;
+// // function createEmployeeRecord(arr) {
+// //   return {
+// //     firstName: arr[0],
+// //     familyName: arr[1],
+// //     title: arr[2],
+// //     payPerHour: arr[3],
+// //     timeInEvents: [],
+// //     timeOutEvents: []
+// //   };
 // // }
-// // function hoursWorkedOnDate(employeeRecord, dateStamp) {
-// //     const timeInEvent = employeeRecord.timeInEvents.find(event => event.date === dateStamp);
-// //     const timeOutEvent = employeeRecord.timeOutEvents.find(event => event.date === dateStamp);
-// //     const hoursWorked = (timeOutEvent.hour - timeInEvent.hour) / 100;
-// //     return hoursWorked;
+
+// // function createEmployeeRecords(arr) {
+// //   return arr.map(function (innerArr) {
+// //     return createEmployeeRecord(innerArr)
+// //   })
 // // }
+
+// // function createTimeInEvent(dateStamp) {
+// //   let [date, hour] = dateStamp.split(' ');
+// //   this.timeInEvents.push({
+// //     type: "TimeIn",
+// //     hour: parseInt(hour, 10),
+// //     date: date
+// //   });
+// //   return this;
+// // }
+
+// // function createTimeOutEvent(dateStamp) {
+// //   let [date, hour] = dateStamp.split(' ')
+// //   this.timeOutEvents.push({
+// //     type: "TimeOut",
+// //     hour: parseInt(hour, 10),
+// //     date: date
+// //   })
+// //   return this
+// // }
+
+
+// // // -------------------------------------------------------------------------
+
+
+// //   function hoursWorkedOnDate(employeeRecord, date) {
+// //     let inEvent = employeeRecord.timeInEvents.find(function (event) {
+// //             return event.date===date
+
+// //         }) 
+// //         let outEvent = employeeRecord.timeOutEvents.find(function (event) {
+// //             return event.date===date
+
+// //         }) 
+        
+// //         if (inEvent && outEvent) {
+// //         return (outEvent.hour - inEvent.hour) / 100
+// //     }
+
+// //     return 0;
+// // }
+
 // // function wagesEarnedOnDate(employeeRecord, date) {
-// //     const hoursWorked = hoursWorkedOnDate(employeeRecord, date);
-// //     const payOwed = hoursWorked * employeeRecord.payPerHour;
-// //     return payOwed;
-// // }
-// // // function allWagesFor(employeeRecord) {
-// // //     const datesWorked = employeeRecord.timeInEvents.map(event => event.date);
-// // //     const totalWages = datesWorked.reduce((total, date) => {
-// // //         return total + wagesEarnedOnDate(employeeRecord, date);
-// // //     }, 0);
-// // //     return totalWages;
-// // // }
-// // function calculatePayroll(employeeRecords) {
-// //     const totalPayroll = employeeRecords.reduce((total, employeeRecord) => {
-// //       return total + allWagesFor(employeeRecord);
-// //     }, 0);
-// //     return totalPayroll;
+// //   let rawWage = hoursWorkedOnDate(employeeRecord, date) * employeeRecord.payPerHour
+// //   return parseFloat(rawWage.toString())
 // // }
 
+// // function allWagesFor(employeeRecord) {
+// //   let dates = employeeRecord.timeInEvents.map(function (event) {
+// //     return event.date
+// //   })
 
-// function createEmployeeRecord(array) {
-//     return {
-//       firstName: array[0],
-//       familyName: array[1],
-//       title: array[2],
-//       payPerHour: array[3],
-//       timeInEvents: [],
-//       timeOutEvents: []
-//     }
-// }
-  
-// function createEmployeeRecords(employeeArrays) {
-//     return employeeArrays.map(createEmployeeRecord)
-// }
-  
-// function createTimeInEvent(dateTime) {
-//     const [date, hour] = dateTime.split(' ')
-//     this.timeInEvents.push({
-//       type: 'TimeIn',
-//       date: date,
-//       hour: parseInt(hour, 10)
-//     })
-//     return this
-// }
-  
-// function createTimeOutEvent(dateTime) {
-//     const [date, hour] = dateTime.split(' ')
-//     this.timeOutEvents.push({
-//       type: 'TimeOut',
-//       date: date,
-//       hour: parseInt(hour, 10)
-//     })
-//     return this
-// }
+// //   let payable = dates.reduce(function (memo, date) {
+// //     return memo + wagesEarnedOnDate(employeeRecord, date)
+// //   }, 0)
 
-// // function hoursWorkedOnDate(employeeRecord, dateStamp) {
-// //     const timeInEvent = employeeRecord.timeInEvents.find(event => event.date === dateStamp);
-// //     const timeOutEvent = employeeRecord.timeOutEvents.find(event => event.date === dateStamp);
-// //     const hoursWorked = (timeOutEvent.hour - timeInEvent.hour) / 100;
-// //     return hoursWorked;
+// //   return payable
 // // }
 
-// function hoursWorkedOnDate(dateStamp) {
-//     const timeInEvent = employeeRecord.timeInEvents.find(event => event.date === dateStamp);
-//     const timeOutEvent = employeeRecord.timeOutEvents.find(event => event.date === dateStamp);
-//     const hoursWorked = (timeOutEvent.hour - timeInEvent.hour) / 100;
-//     return hoursWorked;
+// // function calculatePayroll(arr) {
+// //     return arr.reduce(function (memo, employeeRecord) {
+// //       return memo + allWagesFor(employeeRecord)
+// //     }, 0)
+// // }
+
+
+// // const employee = createEmployeeRecord(["John", "Doe", "Manager", 25]);
+// // const createTimeInEventBound = createTimeInEvent.bind(employee);
+// // createTimeInEvent("2023-05-16 0900");
+// // console.log(employee.timeInEvents);
+
+
+
+// function createEmployeeRecord(arr) {
+//   return {
+//     firstName: arr[0],
+//     familyName: arr[1],
+//     title: arr[2],
+//     payPerHour: arr[3],
+//     timeInEvents: [],
+//     timeOutEvents: []
+//   };
+// }
+
+// function createEmployeeRecords(arr) {
+//   return arr.map(function (innerArr) {
+//     return createEmployeeRecord(innerArr)
+//   });
+// }
+
+// function createTimeInEvent(dateStamp) {
+//   let [date, hour] = dateStamp.split(' ');
+//   this.timeInEvents.push({
+//     type: "TimeIn",
+//     hour: parseInt(hour, 10),
+//     date: date
+//   });
+//   return this;
+// }
+
+// function createTimeOutEvent(dateStamp) {
+//   let [date, hour] = dateStamp.split(' ')
+//   this.timeOutEvents.push({
+//     type: "TimeOut",
+//     hour: parseInt(hour, 10),
+//     date: date
+//   })
+//   return this;
+// }
+
+// function hoursWorkedOnDate(employeeRecord, date) {
+//   let inEvent = employeeRecord.timeInEvents.find(function (event) {
+//     return event.date === date;
+//   });
+
+//   let outEvent = employeeRecord.timeOutEvents.find(function (event) {
+//     return event.date === date;
+//   });
+
+//   if (inEvent && outEvent) {
+//     return (outEvent.hour - inEvent.hour) / 100;
+//   }
+
+//   return 0;
 // }
 
 // function wagesEarnedOnDate(employeeRecord, date) {
-//     const hoursWorked = hoursWorkedOnDate(employeeRecord, date);
-//         const payOwed = hoursWorked * employeeRecord.payPerHour;
-//         return payOwed;
+//   let rawWage = hoursWorkedOnDate(employeeRecord, date) * employeeRecord.payPerHour;
+//   return parseFloat(rawWage.toString());
 // }
 
 // function allWagesFor(employeeRecord) {
-//     const datesWorked = employeeRecord.timeInEvents.map(event => event.date);
-//     const totalWages = datesWorked.reduce((total, date) => {
-//         return total + wagesEarnedOnDate(employeeRecord, date);
-//     }, 0);
-//     return totalWages;
+//   let dates = employeeRecord.timeInEvents.map(function (event) {
+//     return event.date;
+//   });
+
+//   let payable = dates.reduce(function (memo, date) {
+//     return memo + wagesEarnedOnDate(employeeRecord, date);
+//   }, 0);
+
+//   return payable;
 // }
 
-// function findEmployeeByFirstName() {
-
+// function calculatePayroll(arr) {
+//   return arr.reduce(function (memo, employeeRecord) {
+//     return memo + allWagesFor(employeeRecord);
+//   }, 0);
 // }
 
-// function calculatePayroll() {
+// const employee = createEmployeeRecord(["John", "Doe", "Manager", 25]);
+// const createTimeInEventBound = createTimeInEvent.bind(employee);
+// createTimeInEventBound("2023-05-16 09:00");
+// console.log(employee.timeInEvents);
 
-// }
-
-
-function createEmployeeRecord(arr) {
+function createEmployeeRecord(employeeData) {
   return {
-    firstName: arr[0],
-    familyName: arr[1],
-    title: arr[2],
-    payPerHour: arr[3],
+    firstName: employeeData[0],
+    familyName: employeeData[1],
+    title: employeeData[2],
+    payPerHour: employeeData[3],
     timeInEvents: [],
     timeOutEvents: []
-  }
+  };
 }
 
-function createEmployeeRecords(arr) {
-  return arr.map(function (innerArr) {
-    return createEmployeeRecord(innerArr)
-  })
+function createEmployeeRecords(arrayOfArrays) {
+  return arrayOfArrays.map(createEmployeeRecord);
 }
 
 function createTimeInEvent(dateStamp) {
-  let [date, hour] = dateStamp.split(' ')
+  const [date, hour] = dateStamp.split(" ");
+
   this.timeInEvents.push({
     type: "TimeIn",
-    hour: parseInt(hour, 10),
-    date: date
-  })
-  return this
+    date: date,
+    hour: parseInt(hour, 10)
+  });
+
+  return this;
 }
 
 function createTimeOutEvent(dateStamp) {
-  let [date, hour] = dateStamp.split(' ')
+  const [date, hour] = dateStamp.split(" ");
+
   this.timeOutEvents.push({
     type: "TimeOut",
-    hour: parseInt(hour, 10),
-    date: date
-  })
-  return this
+    date: date,
+    hour: parseInt(hour, 10)
+  });
+
+  return this;
 }
 
-function hoursWorkedOnDate(employeeRecord, date) {
-  let inEvent = employeeRecord.timeInEvents.find(function (event) {
-    return event.date === date
-  })
+function hoursWorkedOnDate(date) {
+  const timeIn = this.timeInEvents.find(event => event.date === date).hour;
+  const timeOut = this.timeOutEvents.find(event => event.date === date).hour;
 
-  let outEvent = employeeRecord.timeOutEvents.find(function (event) {
-    return event.date === date
-  })
-
-  return (outEvent.hour - inEvent.hour) / 100
+  return (timeOut - timeIn) / 100;
 }
 
-function wagesEarnedOnDate(employeeRecord, date) {
-  let rawWage = hoursWorkedOnDate(employeeRecord, date) * employeeRecord.payPerHour
-  return parseFloat(rawWage.toString())
+function wagesEarnedOnDate(date) {
+  const hoursWorked = hoursWorkedOnDate.call(this, date);
+  return hoursWorked * this.payPerHour;
 }
 
-function allWagesFor(employeeRecord) {
-  let dates = employeeRecord.timeInEvents.map(function (event) {
-    return event.date
-  })
-
-  let payable = dates.reduce(function (memo, date) {
-    return memo + wagesEarnedOnDate(employeeRecord, date)
-  }, 0)
-
-  return payable
+function allWagesFor() {
+  const dates = this.timeInEvents.map(event => event.date);
+  return dates.reduce((totalWages, date) => totalWages + wagesEarnedOnDate.call(this, date), 0);
 }
 
-function calculatePayroll(arr) {
-    return arr.reduce(function (memo, employeeRecord) {
-      return memo + allWagesFor(employeeRecord)
-    }, 0)
-  }
- 
+function findEmployeeByFirstName(collection, firstName) {
+  return collection.find(employee => employee.firstName === firstName);
+}
+
+function calculatePayroll(employeeRecords) {
+  return employeeRecords.reduce((totalPayroll, employee) => totalPayroll + allWagesFor.call(employee), 0);
+}
